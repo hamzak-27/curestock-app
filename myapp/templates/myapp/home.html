@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curestock - Call History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #e7f4ff;
+        }
+        .calls-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .call-card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .call-info {
+            flex: 1;
+        }
+        .phone-number {
+            font-weight: bold;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .call-time {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .call-duration {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .view-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .view-btn:hover {
+            background-color: #2980b9;
+        }
+        .no-calls {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 30px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+        .inventory-link {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .inventory-link:hover {
+            background-color: #219653;
+        }
+    </style>
+</head>
+<body>
+    <h1>Curestock Call History</h1>
+    
+    <div class="nav-links">
+        <a href="{% url 'myapp:home' %}">Call History</a>
+        <a href="{% url 'myapp:inventory_list' %}">Inventory Management</a>
+    </div>
+    
+    <div class="calls-container">
+        {% if calls %}
+            {% for call in calls %}
+                <div class="call-card">
+                    <div class="call-info">
+                        <div class="phone-number">{{ call.phone_number }}</div>
+                        <div class="call-time">{{ call.call_time|date:"F j, Y - g:i A" }}</div>
+                        <div class="call-duration">Duration: {{ call.duration }} seconds</div>
+                    </div>
+                    
+                    <a href="{% url 'myapp:call_detail' call.id %}" class="view-btn">View Order</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-calls">
+                <p>No call history found.</p>
+                <p>When customers place orders through the voice agent, they will appear here.</p>
+            </div>
+        {% endif %}
+        
+        <a href="{% url 'myapp:inventory_list' %}" class="inventory-link">Go to Inventory Management</a>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice #{{ bill.invoice_number }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #e7f4ff;
+        }
+        .bill-container {
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+        .bill-content {
+            white-space: pre-line;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        .print-button {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 10px;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .print-button:hover {
+            background-color: #219653;
+        }
+        .bill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .bill-header h2 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        .bill-info {
+            text-align: right;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+            }
+            .nav-links, .back-button, .print-button {
+                display: none;
+            }
+            .bill-container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Invoice #{{ bill.invoice_number }}</h1>
+        
+        <div class="nav-links">
+            <a href="{% url 'myapp:home' %}">Call History</a>
+            <a href="{% url 'myapp:inventory_list' %}">Inventory Management</a>
+            <a href="{% url 'myapp:call_detail' bill.call.id %}">Back to Order</a>
+        </div>
+        
+        <div class="bill-container">
+            <div class="bill-header">
+                <h2>Invoice #{{ bill.invoice_number }}</h2>
+                <div class="bill-info">
+                    <div>Generated: {{ bill.created_at|date:"F j, Y - g:i A" }}</div>
+                    <div>Total Amount: ₹{{ bill.total_amount }}</div>
+                </div>
+            </div>
+            
+            <div class="bill-content">{{ bill.content }}</div>
+        </div>
+        
+        <button onclick="window.print()" class="print-button">Print Invoice</button>
+        <a href="{% url 'myapp:call_detail' bill.call.id %}" class="back-button">Back to Order</a>
+    </div>
+</body>
+</html> 

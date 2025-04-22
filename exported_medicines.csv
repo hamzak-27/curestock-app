@@ -1,0 +1,51 @@
+id,name,manufacturer,price,quantity,is_discontinued,medicine_type,pack_size,composition1,composition2
+9,Acostin 4.5Million iu Injection,Sun Pharmaceutical Industries Ltd,3897.50,178,False,allopathy,vial of 1 ml Injection,Colistin Sulphate (4.5Million IU),
+26,Autrab-DSR 30mg/20mg Capsule,Genesis Biotech Inc,75.00,80,False,allopathy,strip of 10 capsule sr,Domperidone (30mg) , Rabeprazole (20mg)
+28,Cetvee-L Tablet,Veecube Healthcare Pvt Ltd,50.00,47,False,allopathy,strip of 10 tablets,Levocetirizine (5mg),
+22,Clavoiz 250mg/125mg Tablet,Voizmed Pharma Pvt Ltd,150.00,166,False,allopathy,strip of 10 tablets,Amoxycillin  (250mg) ,  Clavulanic Acid (125mg)
+18,Coxilor P 8mg/325mg Tablet,Leeford Healthcare Ltd,70.00,167,False,allopathy,strip of 10 tablets,Lornoxicam (8mg) , Paracetamol (325mg)
+8,Dioxim 100mg Tablet DT,Divine Lifecare Pvt Ltd,100.00,88,False,allopathy,strip of 10 tablet dt,Cefpodoxime Proxetil (100mg),
+32,Droxin 25 Tablet,Plus India,16.00,145,False,allopathy,strip of 10 tablets,Hydroxyzine (25mg),
+42,Duomate Transcaps,Lupin Ltd,124.50,101,False,allopathy,bottle of 30 transcaps,Beclometasone (200mcg) , Formoterol (6mcg)
+23,Durapain 75mg/50mg Tablet,Abbott,229.85,176,True,allopathy,strip of 10 tablets,Diclofenac (75mg) , Tramadol (50mg)
+14,Elox 400 Tablet,Cortina Laboratories Pvt Ltd,80.00,14,False,allopathy,strip of 10 tablets,Ofloxacin (400mg),
+17,Elpress 5mg Tablet,Elder Pharmaceuticals Ltd,7.43,19,False,allopathy,strip of 10 tablets,Amlodipine (5mg),
+27,Esz-O Oral Suspension Mint Sugar Free,TBG pharma ltd,129.99,171,False,allopathy,bottle of 100 ml Oral Suspension,Sucralfate (1000mg/10ml) , Oxetacaine (20mg/10ml)
+25,Etomet P 60mg/325mg Tablet,Metlar Formulations,86.40,142,False,allopathy,strip of 10 tablets,Etoricoxib (60mg) , Paracetamol (325mg)
+44,Fexit B Cream,Zee Laboratories,61.53,178,False,allopathy,tube of 10 gm Cream,Beclometasone (0.025% w/w) , Fusidic Acid (2% w/w)
+30,Fixicom Tablet,Syncom Formulations  I  Limited,101.25,165,False,allopathy,strip of 10 tablets,Cefixime (200mg) , Lactobacillus (60Million spores)
+15,Fppi Tablet,Freesias Pharma Pvt Ltd,89.00,76,False,allopathy,strip of 10 tablets,Pantoprazole (40mg),
+47,Giarab L 75mg/20mg Capsule SR,Enrico Pharmaceuticals,165.00,182,False,allopathy,strip of 10 capsule sr,Levosulpiride (75mg) , Rabeprazole (20mg)
+20,Infepod 100mg Syrup,Demax Biotech Pvt Ltd,116.00,22,False,allopathy,bottle of 30 ml Syrup,Cefpodoxime Proxetil (100mg/5ml),
+21,Intriax 250mg Injection,Integrated Laboratories Pvt Ltd,35.00,159,False,allopathy,vial of 1 Injection,Ceftriaxone (250mg),
+36,Kosgesic 120mg Tablet,Elkos Healthcare Pvt Ltd,118.00,148,False,allopathy,strip of 10 tablets,Etoricoxib (120mg),
+19,Lactigol Granules,Lupin Ltd,235.70,26,False,allopathy,bottle of 90 gm Granules,Lactitol (10gm) , Ispaghula (3.5gm)
+4,Lanagesic 8mg Injection,Wockhardt Ltd,47.76,129,False,allopathy,vial of 2 ml Injection,Lornoxicam (8mg),
+13,Leepride 75 Tablet,Johnlee Pharmaceuticals Pvt Ltd,154.00,151,False,allopathy,strip of 10 tablets,Levosulpiride (75mg),
+10,Levocen 5mg Tablet,Gatlen Biotech,32.00,150,False,allopathy,strip of 10 tablets,Levocetirizine (5mg),
+31,Losarnet 50 Tablet,Pharma Planet India,48.70,106,False,allopathy,strip of 10 tablets,Losartan (50mg),
+3,Meditax 200mg Tablet,Medi Biotech Pvt Ltd,105.17,149,False,allopathy,strip of 10 tablets,Cefixime (200mg),
+5,Micro-D3 Chewable Tablet,Micro Labs Ltd,241.28,65,False,allopathy,strip of 8 Chewable Tablets,Vitamin D3 (60000IU),
+37,Oflares 200mg Tablet,Glosun Pharma Pvt Ltd,41.00,105,False,allopathy,strip of 10 tablets,Ofloxacin (200mg),
+41,Oftem-OZ 200mg/500mg Tablet,Totem Biotech Pvt Ltd,80.00,37,False,allopathy,strip of 10 tablets,Ofloxacin (200mg) , Ornidazole (500mg)
+16,Opicef XP 1000mg/500mg Injection,Ani Healthcare Pvt Ltd,240.00,138,False,allopathy,vial of 1 Injection,Cefoperazone (1000mg) , Sulbactam (500mg)
+45,Oxa 50mg/5ml Syrup,Ravian Pharmaceuticals Ltd,45.78,10,False,allopathy,bottle of 60 ml Syrup,Ofloxacin (50mg/5ml),
+11,Pantaron 40mg Tablet,Vega Laboratories Pvt Ltd,49.25,108,False,allopathy,strip of 10 tablets,Pantoprazole (40mg),
+46,Prazocid-DSR Capsule,AAR ESS Remedies Pvt Ltd,115.00,172,False,allopathy,strip of 10 capsule sr,Domperidone (30mg) , Pantoprazole (40mg)
+39,Presil AM  Syrup,Kentreck Laboratories Pvt Ltd,43.92,180,False,allopathy,bottle of 100 ml Syrup,Ambroxol (15mg/5ml) , Guaifenesin (50mg/5ml) 
+38,Rabio DSR Capsule,Bennet Pharmaceuticals Limited,61.60,164,False,allopathy,strip of 10 capsules,Domperidone (30mg) , Rabeprazole (20mg)
+43,Ranibid 40mg Injection,Fytokem Formulations,3.02,84,False,allopathy,vial of 2 ml Injection,Ranitidine (40mg),
+48,Regunac 50mg Capsule,Unijules Life Science Ltd,20.00,104,False,allopathy,strip of 10 capsules,Diclofenac (50mg),
+29,Roxitid 150mg Tablet,Sun Pharmaceutical Industries Ltd,85.50,20,False,allopathy,strip of 10 tablets,Roxithromycin (150mg),
+24,Smocon 100mg Capsule,Smotec Pharmaceuticals,110.00,150,False,allopathy,strip of 10 capsules,Itraconazole (100mg),
+1,Sonirab-IT Capsule SR,Ronyd Healthcare Pvt Ltd,142.00,45,False,allopathy,strip of 10 capsule sr,Rabeprazole (20mg) , Itopride (150mg)
+2,Talmin 650mg Tablet,Unimarck Healthcare Ltd,16.00,98,False,allopathy,strip of 10 tablets,Paracetamol (650mg),
+33,Torist 20mg Tablet,MySIM Therapeutics Pvt. Ltd.,45.00,21,False,allopathy,strip of 10 tablets,Torasemide (20mg),
+35,Ulpan Gel Saunf Sugar Free,Corona Remedies Pvt Ltd,129.12,81,True,allopathy,bottle of 170 ml Suspension,Oxetacaine (10mg/5ml) , Aluminium Hydroxide (0.291gm/5ml) 
+6,Valicet M Syrup,Volks Biotech,65.00,170,False,allopathy,bottle of 60 ml Syrup,Levocetirizine (2.5mg/5ml) , Montelukast (4mg/5ml)
+34,Vesbal 16mg Tablet,Alkem Laboratories Ltd,108.50,155,True,allopathy,strip of 10 tablets,Betahistine (16mg),
+49,Vogligem M 500 mg/0.3 mg Tablet,Maneesh Pharmaceuticals Ltd,121.00,170,False,allopathy,strip of 10 tablets,Metformin (500mg) , Voglibose (0.3mg)
+50,ZO T  TABLET 200 MG/600 MG,FDC Ltd,65.00,44,True,allopathy,strip of 10 tablets,Ofloxacin (200mg) , Tinidazole (600mg)
+7,Zeox 50mg Dry Syrup,Sigma Softgel Formulation,47.20,151,False,allopathy,bottle of 30 ml Dry Syrup,Cefixime (50mg/5ml),
+12,Zolecell 40mg Tablet,Raksh Pharmaceuticals,91.57,185,False,allopathy,strip of 10 tablets,Pantoprazole (40mg),
+40,Zotan H 50mg/12.5mg Tablet,Zoticus Pharmaceuticals,68.75,119,False,allopathy,strip of 10 tablets,Losartan (50mg) , Hydrochlorothiazide (12.5mg)
