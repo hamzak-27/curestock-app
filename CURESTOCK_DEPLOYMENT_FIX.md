@@ -4,19 +4,24 @@ Follow these steps to fix the database connection issue for your CureStock app o
 
 ## The Issue
 
-Your application is showing: `Error: no such table: myapp_call` because the database migrations haven't been applied to your PostgreSQL database on Render.
+Your application is showing: `Error: no such table: myapp_call` because:
+1. **No environment variables were defined** on your Render service
+2. The database connection couldn't be established
+3. Migrations weren't applied to your PostgreSQL database
 
 ## Step-by-Step Fix
 
-### 1. Update Environment Variables
+### 1. Add Essential Environment Variables
 
 1. Log in to your [Render Dashboard](https://dashboard.render.com/)
 2. Select your `curestock-app` web service
 3. Go to the **Environment** tab
-4. Add/Update the following environment variables:
+4. You need to **add all** of the following environment variables:
    - `DATABASE_URL`: `postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1`
    - `RENDER`: `true`
    - `RUN_MIGRATIONS_ON_STARTUP`: `true`
+   - `SECRET_KEY`: (generate a random string or use Render's secret generator)
+   - `DEBUG`: `False` 
 5. Click **Save Changes**
 
 ### 2. Run Manual Migration Script (via Render Shell)
@@ -35,7 +40,7 @@ Your application is showing: `Error: no such table: myapp_call` because the data
 ### 3. Restart Your Service
 
 1. Go back to the main page of your web service
-2. Click **Manual Deploy**
+2. Click **Manual Deploy** 
 3. Select **Clear build cache & deploy**
 4. Wait for the service to rebuild and restart
 
@@ -47,38 +52,55 @@ Your application is showing: `Error: no such table: myapp_call` because the data
 
 ## Alternative Fix Options
 
-If the above steps don't work, try these alternatives:
+If adding environment variables doesn't work, you have these alternatives:
 
-### SSH Into Your Service and Run Django Migrate Directly
+### Direct Command Line Fix
+
+In the Render shell:
 
 ```bash
-# Connect to your service shell
-python manage.py showmigrations  # Check migration status
-python manage.py migrate         # Apply migrations
+# Set environment variables manually
+export DATABASE_URL="postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1"
+export RENDER="true"
+
+# Run migrations
+python manage.py migrate
 ```
 
-### Update Your Render Config (render.yaml)
+### Update Your render.yaml File
 
-If you're using GitHub deployment, update your `render.yaml` file to use the correct database URL:
+If you're using GitHub deployment, update your `render.yaml` file:
 
 ```yaml
 services:
   - type: web
     name: curestock-app
-    # ...other settings...
+    env: python
+    region: oregon
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: gunicorn myproject.wsgi:application
+    runtime: python3.11
     envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
       - key: DATABASE_URL
         value: postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1
-      # ...other env vars...
+      - key: DEBUG
+        value: "False"
+      - key: RENDER
+        value: "true"
+      - key: RUN_MIGRATIONS_ON_STARTUP
+        value: "true"
+    autoDeploy: true
 ```
 
-Then redeploy your application.
+Then push this change to your repository.
 
-## Troubleshooting
+## Troubleshooting Common Issues
 
-If you're still having issues:
-
-1. Check Render logs for error messages
-2. Verify your database exists and is accessible
-3. Try both internal and external database URLs
-4. Make sure your PostgreSQL plan on Render is active 
+1. **No environment variables defined**: This is the primary issue you were facing
+2. **Connection refused errors**: Make sure the database exists and is accessible
+3. **Migration errors**: Check if there are any issues with your migration files
+4. **Permissions issues**: Ensure your database user has proper permissions 
