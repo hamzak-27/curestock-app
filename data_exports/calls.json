@@ -1,0 +1,30 @@
+[
+    {
+        "model": "myapp.call",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "phone_number": "+919876543210",
+            "duration": 120,
+            "call_time": "2025-04-21T20:30:20.631Z",
+            "follow_up": false,
+            "summary": "The user called to order aspirin 75mg for pickup.",
+            "transcript": "User: I need aspirin.\nAgent: What strength do you need?\nUser: 75mg, one tablet.\nAgent: Perfect, for pickup or delivery?\nUser: Pickup.\nAgent: Your order has been confirmed.",
+            "recording_url": ""
+        }
+    },
+    {
+        "model": "myapp.call",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "phone_number": "+919867273743",
+            "duration": 146,
+            "call_time": "2025-04-21T19:48:53.234Z",
+            "follow_up": false,
+            "summary": "The user called to order medication and successfully placed an order for one tablet of aspirin 75mg for pickup.",
+            "transcript": "User: Hello?\nAgent: Thank you for calling Curestock. My name is Cimo. How can I help with your medication needs today?\nUser: I need one active one incident.\nAgent: Could you clarify the names of the medications you are referring to? I would be happy to assist with your order!\nUser: I am sorry. Can you repeat?\nAgent: Of course! Could you please provide the names of the medications you need? I will help you place your order right away.\nUser: Uh, the first medication I need is, uh, aspirin.\nAgent: Got it! What strength of aspirin do you need, and how many tablets would you like to order?\nUser: I need thirty mg.\nAgent: Thank you! Unfortunately, aspirin typically comes in strengths like 75mg, 81mg, or 325mg. Could you confirm if you need one of these, or should I check for a specific brand or formulation?\nUser: Give me seventy five mg.\nAgent: Got it! How many tablets of aspirin 75mg would you like to order?\nUser: I would like to order one one.\nAgent: Just to confirm, you would like to order one tablet of aspirin 75mg?\nUser: Yes.\nAgent: Thank you! I have added one tablet of aspirin 75mg to your order. Is there anything else you need today?\nUser: No. Nothing else. Only this much.\nAgent: Great! Let me confirm your order: 1 tablet of aspirin 75mg. Would you prefer delivery or pickup for your order?\nUser: Pickup.\nAgent: Perfect! Your order will be ready for pickup. Thank you for choosing Curestock. Have a great day!\nUser: Thank you.\nAgent: You are very welcome! Take care!",
+            "recording_url": ""
+        }
+    }
+]

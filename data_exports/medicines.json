@@ -1,0 +1,802 @@
+[
+    {
+        "model": "myapp.medicine",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "name": "Sonirab-IT Capsule SR",
+            "manufacturer": "Ronyd Healthcare Pvt Ltd",
+            "price": "142.00",
+            "quantity": 45,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsule sr",
+            "composition1": "Rabeprazole (20mg) ",
+            "composition2": " Itopride (150mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "name": "Talmin 650mg Tablet",
+            "manufacturer": "Unimarck Healthcare Ltd",
+            "price": "16.00",
+            "quantity": 98,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Paracetamol (650mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 3,
+        "fields": {
+            "id": 3,
+            "name": "Meditax 200mg Tablet",
+            "manufacturer": "Medi Biotech Pvt Ltd",
+            "price": "105.17",
+            "quantity": 149,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Cefixime (200mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 4,
+        "fields": {
+            "id": 4,
+            "name": "Lanagesic 8mg Injection",
+            "manufacturer": "Wockhardt Ltd",
+            "price": "47.76",
+            "quantity": 129,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "vial of 2 ml Injection",
+            "composition1": "Lornoxicam (8mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 5,
+        "fields": {
+            "id": 5,
+            "name": "Micro-D3 Chewable Tablet",
+            "manufacturer": "Micro Labs Ltd",
+            "price": "241.28",
+            "quantity": 65,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 8 Chewable Tablets",
+            "composition1": "Vitamin D3 (60000IU)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 6,
+        "fields": {
+            "id": 6,
+            "name": "Valicet M Syrup",
+            "manufacturer": "Volks Biotech",
+            "price": "65.00",
+            "quantity": 170,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 60 ml Syrup",
+            "composition1": "Levocetirizine (2.5mg/5ml) ",
+            "composition2": " Montelukast (4mg/5ml)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 7,
+        "fields": {
+            "id": 7,
+            "name": "Zeox 50mg Dry Syrup",
+            "manufacturer": "Sigma Softgel Formulation",
+            "price": "47.20",
+            "quantity": 151,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 30 ml Dry Syrup",
+            "composition1": "Cefixime (50mg/5ml)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 8,
+        "fields": {
+            "id": 8,
+            "name": "Dioxim 100mg Tablet DT",
+            "manufacturer": "Divine Lifecare Pvt Ltd",
+            "price": "100.00",
+            "quantity": 88,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablet dt",
+            "composition1": "Cefpodoxime Proxetil (100mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 9,
+        "fields": {
+            "id": 9,
+            "name": "Acostin 4.5Million iu Injection",
+            "manufacturer": "Sun Pharmaceutical Industries Ltd",
+            "price": "3897.50",
+            "quantity": 178,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "vial of 1 ml Injection",
+            "composition1": "Colistin Sulphate (4.5Million IU)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 10,
+        "fields": {
+            "id": 10,
+            "name": "Levocen 5mg Tablet",
+            "manufacturer": "Gatlen Biotech",
+            "price": "32.00",
+            "quantity": 150,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Levocetirizine (5mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 11,
+        "fields": {
+            "id": 11,
+            "name": "Pantaron 40mg Tablet",
+            "manufacturer": "Vega Laboratories Pvt Ltd",
+            "price": "49.25",
+            "quantity": 108,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Pantoprazole (40mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 12,
+        "fields": {
+            "id": 12,
+            "name": "Zolecell 40mg Tablet",
+            "manufacturer": "Raksh Pharmaceuticals",
+            "price": "91.57",
+            "quantity": 185,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Pantoprazole (40mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 13,
+        "fields": {
+            "id": 13,
+            "name": "Leepride 75 Tablet",
+            "manufacturer": "Johnlee Pharmaceuticals Pvt Ltd",
+            "price": "154.00",
+            "quantity": 151,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Levosulpiride (75mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 14,
+        "fields": {
+            "id": 14,
+            "name": "Elox 400 Tablet",
+            "manufacturer": "Cortina Laboratories Pvt Ltd",
+            "price": "80.00",
+            "quantity": 14,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Ofloxacin (400mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 15,
+        "fields": {
+            "id": 15,
+            "name": "Fppi Tablet",
+            "manufacturer": "Freesias Pharma Pvt Ltd",
+            "price": "89.00",
+            "quantity": 76,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Pantoprazole (40mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 16,
+        "fields": {
+            "id": 16,
+            "name": "Opicef XP 1000mg/500mg Injection",
+            "manufacturer": "Ani Healthcare Pvt Ltd",
+            "price": "240.00",
+            "quantity": 138,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "vial of 1 Injection",
+            "composition1": "Cefoperazone (1000mg) ",
+            "composition2": " Sulbactam (500mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 17,
+        "fields": {
+            "id": 17,
+            "name": "Elpress 5mg Tablet",
+            "manufacturer": "Elder Pharmaceuticals Ltd",
+            "price": "7.43",
+            "quantity": 19,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Amlodipine (5mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 18,
+        "fields": {
+            "id": 18,
+            "name": "Coxilor P 8mg/325mg Tablet",
+            "manufacturer": "Leeford Healthcare Ltd",
+            "price": "70.00",
+            "quantity": 167,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Lornoxicam (8mg) ",
+            "composition2": " Paracetamol (325mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 19,
+        "fields": {
+            "id": 19,
+            "name": "Lactigol Granules",
+            "manufacturer": "Lupin Ltd",
+            "price": "235.70",
+            "quantity": 26,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 90 gm Granules",
+            "composition1": "Lactitol (10gm) ",
+            "composition2": " Ispaghula (3.5gm)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 20,
+        "fields": {
+            "id": 20,
+            "name": "Infepod 100mg Syrup",
+            "manufacturer": "Demax Biotech Pvt Ltd",
+            "price": "116.00",
+            "quantity": 22,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 30 ml Syrup",
+            "composition1": "Cefpodoxime Proxetil (100mg/5ml)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 21,
+        "fields": {
+            "id": 21,
+            "name": "Intriax 250mg Injection",
+            "manufacturer": "Integrated Laboratories Pvt Ltd",
+            "price": "35.00",
+            "quantity": 159,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "vial of 1 Injection",
+            "composition1": "Ceftriaxone (250mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 22,
+        "fields": {
+            "id": 22,
+            "name": "Clavoiz 250mg/125mg Tablet",
+            "manufacturer": "Voizmed Pharma Pvt Ltd",
+            "price": "150.00",
+            "quantity": 166,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Amoxycillin  (250mg) ",
+            "composition2": "  Clavulanic Acid (125mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 23,
+        "fields": {
+            "id": 23,
+            "name": "Durapain 75mg/50mg Tablet",
+            "manufacturer": "Abbott",
+            "price": "229.85",
+            "quantity": 176,
+            "is_discontinued": true,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Diclofenac (75mg) ",
+            "composition2": " Tramadol (50mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 24,
+        "fields": {
+            "id": 24,
+            "name": "Smocon 100mg Capsule",
+            "manufacturer": "Smotec Pharmaceuticals",
+            "price": "110.00",
+            "quantity": 150,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsules",
+            "composition1": "Itraconazole (100mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 25,
+        "fields": {
+            "id": 25,
+            "name": "Etomet P 60mg/325mg Tablet",
+            "manufacturer": "Metlar Formulations",
+            "price": "86.40",
+            "quantity": 142,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Etoricoxib (60mg) ",
+            "composition2": " Paracetamol (325mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 26,
+        "fields": {
+            "id": 26,
+            "name": "Autrab-DSR 30mg/20mg Capsule",
+            "manufacturer": "Genesis Biotech Inc",
+            "price": "75.00",
+            "quantity": 80,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsule sr",
+            "composition1": "Domperidone (30mg) ",
+            "composition2": " Rabeprazole (20mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 27,
+        "fields": {
+            "id": 27,
+            "name": "Esz-O Oral Suspension Mint Sugar Free",
+            "manufacturer": "TBG pharma ltd",
+            "price": "129.99",
+            "quantity": 171,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 100 ml Oral Suspension",
+            "composition1": "Sucralfate (1000mg/10ml) ",
+            "composition2": " Oxetacaine (20mg/10ml)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 28,
+        "fields": {
+            "id": 28,
+            "name": "Cetvee-L Tablet",
+            "manufacturer": "Veecube Healthcare Pvt Ltd",
+            "price": "50.00",
+            "quantity": 47,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Levocetirizine (5mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 29,
+        "fields": {
+            "id": 29,
+            "name": "Roxitid 150mg Tablet",
+            "manufacturer": "Sun Pharmaceutical Industries Ltd",
+            "price": "85.50",
+            "quantity": 20,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Roxithromycin (150mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 30,
+        "fields": {
+            "id": 30,
+            "name": "Fixicom Tablet",
+            "manufacturer": "Syncom Formulations  I  Limited",
+            "price": "101.25",
+            "quantity": 165,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Cefixime (200mg) ",
+            "composition2": " Lactobacillus (60Million spores)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 31,
+        "fields": {
+            "id": 31,
+            "name": "Losarnet 50 Tablet",
+            "manufacturer": "Pharma Planet India",
+            "price": "48.70",
+            "quantity": 106,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Losartan (50mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 32,
+        "fields": {
+            "id": 32,
+            "name": "Droxin 25 Tablet",
+            "manufacturer": "Plus India",
+            "price": "16.00",
+            "quantity": 145,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Hydroxyzine (25mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 33,
+        "fields": {
+            "id": 33,
+            "name": "Torist 20mg Tablet",
+            "manufacturer": "MySIM Therapeutics Pvt. Ltd.",
+            "price": "45.00",
+            "quantity": 21,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Torasemide (20mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 34,
+        "fields": {
+            "id": 34,
+            "name": "Vesbal 16mg Tablet",
+            "manufacturer": "Alkem Laboratories Ltd",
+            "price": "108.50",
+            "quantity": 155,
+            "is_discontinued": true,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Betahistine (16mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 35,
+        "fields": {
+            "id": 35,
+            "name": "Ulpan Gel Saunf Sugar Free",
+            "manufacturer": "Corona Remedies Pvt Ltd",
+            "price": "129.12",
+            "quantity": 81,
+            "is_discontinued": true,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 170 ml Suspension",
+            "composition1": "Oxetacaine (10mg/5ml) ",
+            "composition2": " Aluminium Hydroxide (0.291gm/5ml) "
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 36,
+        "fields": {
+            "id": 36,
+            "name": "Kosgesic 120mg Tablet",
+            "manufacturer": "Elkos Healthcare Pvt Ltd",
+            "price": "118.00",
+            "quantity": 148,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Etoricoxib (120mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 37,
+        "fields": {
+            "id": 37,
+            "name": "Oflares 200mg Tablet",
+            "manufacturer": "Glosun Pharma Pvt Ltd",
+            "price": "41.00",
+            "quantity": 105,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Ofloxacin (200mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 38,
+        "fields": {
+            "id": 38,
+            "name": "Rabio DSR Capsule",
+            "manufacturer": "Bennet Pharmaceuticals Limited",
+            "price": "61.60",
+            "quantity": 164,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsules",
+            "composition1": "Domperidone (30mg) ",
+            "composition2": " Rabeprazole (20mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 39,
+        "fields": {
+            "id": 39,
+            "name": "Presil AM  Syrup",
+            "manufacturer": "Kentreck Laboratories Pvt Ltd",
+            "price": "43.92",
+            "quantity": 180,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 100 ml Syrup",
+            "composition1": "Ambroxol (15mg/5ml) ",
+            "composition2": " Guaifenesin (50mg/5ml) "
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 40,
+        "fields": {
+            "id": 40,
+            "name": "Zotan H 50mg/12.5mg Tablet",
+            "manufacturer": "Zoticus Pharmaceuticals",
+            "price": "68.75",
+            "quantity": 119,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Losartan (50mg) ",
+            "composition2": " Hydrochlorothiazide (12.5mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 41,
+        "fields": {
+            "id": 41,
+            "name": "Oftem-OZ 200mg/500mg Tablet",
+            "manufacturer": "Totem Biotech Pvt Ltd",
+            "price": "80.00",
+            "quantity": 37,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Ofloxacin (200mg) ",
+            "composition2": " Ornidazole (500mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 42,
+        "fields": {
+            "id": 42,
+            "name": "Duomate Transcaps",
+            "manufacturer": "Lupin Ltd",
+            "price": "124.50",
+            "quantity": 101,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 30 transcaps",
+            "composition1": "Beclometasone (200mcg) ",
+            "composition2": " Formoterol (6mcg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 43,
+        "fields": {
+            "id": 43,
+            "name": "Ranibid 40mg Injection",
+            "manufacturer": "Fytokem Formulations",
+            "price": "3.02",
+            "quantity": 84,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "vial of 2 ml Injection",
+            "composition1": "Ranitidine (40mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 44,
+        "fields": {
+            "id": 44,
+            "name": "Fexit B Cream",
+            "manufacturer": "Zee Laboratories",
+            "price": "61.53",
+            "quantity": 178,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "tube of 10 gm Cream",
+            "composition1": "Beclometasone (0.025% w/w) ",
+            "composition2": " Fusidic Acid (2% w/w)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 45,
+        "fields": {
+            "id": 45,
+            "name": "Oxa 50mg/5ml Syrup",
+            "manufacturer": "Ravian Pharmaceuticals Ltd",
+            "price": "45.78",
+            "quantity": 10,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "bottle of 60 ml Syrup",
+            "composition1": "Ofloxacin (50mg/5ml)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 46,
+        "fields": {
+            "id": 46,
+            "name": "Prazocid-DSR Capsule",
+            "manufacturer": "AAR ESS Remedies Pvt Ltd",
+            "price": "115.00",
+            "quantity": 172,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsule sr",
+            "composition1": "Domperidone (30mg) ",
+            "composition2": " Pantoprazole (40mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 47,
+        "fields": {
+            "id": 47,
+            "name": "Giarab L 75mg/20mg Capsule SR",
+            "manufacturer": "Enrico Pharmaceuticals",
+            "price": "165.00",
+            "quantity": 182,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsule sr",
+            "composition1": "Levosulpiride (75mg) ",
+            "composition2": " Rabeprazole (20mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 48,
+        "fields": {
+            "id": 48,
+            "name": "Regunac 50mg Capsule",
+            "manufacturer": "Unijules Life Science Ltd",
+            "price": "20.00",
+            "quantity": 104,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 capsules",
+            "composition1": "Diclofenac (50mg)",
+            "composition2": ""
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 49,
+        "fields": {
+            "id": 49,
+            "name": "Vogligem M 500 mg/0.3 mg Tablet",
+            "manufacturer": "Maneesh Pharmaceuticals Ltd",
+            "price": "121.00",
+            "quantity": 170,
+            "is_discontinued": false,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Metformin (500mg) ",
+            "composition2": " Voglibose (0.3mg)"
+        }
+    },
+    {
+        "model": "myapp.medicine",
+        "pk": 50,
+        "fields": {
+            "id": 50,
+            "name": "ZO T  TABLET 200 MG/600 MG",
+            "manufacturer": "FDC Ltd",
+            "price": "65.00",
+            "quantity": 44,
+            "is_discontinued": true,
+            "medicine_type": "allopathy",
+            "pack_size": "strip of 10 tablets",
+            "composition1": "Ofloxacin (200mg) ",
+            "composition2": " Tinidazole (600mg)"
+        }
+    }
+]
