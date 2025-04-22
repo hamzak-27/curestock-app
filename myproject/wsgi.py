@@ -13,7 +13,11 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
 
+# If we're on Render, set the environment flag
+if 'RENDER' in os.environ:
+    os.environ['RENDER'] = '1'
+
 application = get_wsgi_application()
 
-# This is needed for Vercel deployment
+# This makes the application compatible with various hosting platforms
 app = application

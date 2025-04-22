@@ -3,8 +3,9 @@ services:
     name: curestock-app
     env: python
     region: oregon # Replace with your preferred region
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    buildCommand: chmod +x build.sh && ./build.sh
     startCommand: gunicorn myproject.wsgi:application
+    runtime: python3.11
     envVars:
       - key: SECRET_KEY
         generateValue: true
