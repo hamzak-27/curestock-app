@@ -90,6 +90,20 @@ DATABASES = {
     }
 }
 
+# For production on Render
+if os.environ.get('RENDER'):
+    # Use SQLite in production on Render
+    ALLOWED_HOSTS.extend(['render.com', '.onrender.com'])
+    
+    # Configure static files for Render
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
+    
+    # Add security settings
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -126,7 +140,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Enable WhiteNoise compression and caching
@@ -144,20 +157,4 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # Crispy Forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-# Database configuration for Vercel
-if os.getenv("VERCEL"):
-    # Use Neon PostgreSQL
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=os.getenv("DATABASE_URL"),
-            conn_max_age=600,
-            ssl_require=True,
-        )
-    }
-    # Disable CSRF for serverless functions as vercel uses serverless architecture
-    MIDDLEWARE = [m for m in MIDDLEWARE if not m.endswith('CsrfViewMiddleware')]
-    
-    # Handle static files appropriately
-    STATIC_URL = 'https://assets.vercel.com/image/upload/static/'
 

@@ -1,17 +1,19 @@
 services:
   - type: web
-    name: curestock
-    runtime: python
-    buildCommand: pip install -r requirements.txt
+    name: curestock-app
+    env: python
+    region: oregon # Replace with your preferred region
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
     startCommand: gunicorn myproject.wsgi:application
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11
-      - key: DATABASE_URL
-        fromDatabase:
-          name: neondb
-          property: connectionString
       - key: SECRET_KEY
+        generateValue: true
+      - key: OPENAI_API_KEY
         sync: false
       - key: DEBUG
-        value: False 
+        value: False
+      - key: RENDER
+        value: true
+      - key: MIGRATION_SECRET
+        generateValue: true
+    autoDeploy: true 
