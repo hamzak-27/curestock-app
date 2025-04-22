@@ -17,8 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+# Simple health check that doesn't depend on app URLs
+def health_check(request):
+    return HttpResponse("OK")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("health", health_check),  # Direct health check at root level
+    path("health/", health_check),  # With trailing slash too
     path('', include('myapp.urls')),
 ]

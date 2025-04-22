@@ -4,7 +4,8 @@ from . import views
 app_name = 'myapp'
 
 urlpatterns = [
-    path('health/', views.health_check, name='health_check'),
+    path('health', views.health_check, name='health_check'),
+    path('health/', views.health_check, name='health_check_slash'),
     path('inventory/', views.inventory_list, name='inventory_list'),
     path('medicine/<int:pk>/', views.medicine_detail, name='medicine_detail'),
     path('export/csv/', views.export_medicines_csv, name='export_medicines_csv'),

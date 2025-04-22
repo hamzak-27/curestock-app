@@ -11,7 +11,7 @@
   ],
   "routes": [
     {
-      "src": "/health",
+      "src": "/health(/|$)",
       "dest": "myproject/wsgi.py"
     },
     {
@@ -31,6 +31,8 @@
   "env": {
     "ALLOWED_HOSTS": ".vercel.app",
     "DEBUG": "False",
-    "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}",
+    "SECRET_KEY": "django-insecure-rc!!rs%4$by+uy_bxppk^owfv(1!o)0u9k=&dd99-_22$eau^i"
   }
 } 
