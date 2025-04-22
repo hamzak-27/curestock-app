@@ -1,36 +1,21 @@
 {
   "version": 2,
-  "buildCommand": "bash build_files.sh",
-  "outputDirectory": "public",
   "ignoreCommand": "echo 'Skipping ignore checks'",
   "builds": [
     {
-      "src": "myproject/wsgi.py",
+      "src": "index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/health(/|$)",
-      "dest": "myproject/wsgi.py"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/staticfiles/$1",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" }
-    },
-    {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|ico|json))",
-      "dest": "/staticfiles/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "myproject/wsgi.py"
+      "dest": "index.py"
     }
   ],
   "env": {
     "ALLOWED_HOSTS": ".vercel.app",
-    "DEBUG": "False",
+    "DEBUG": "True",
     "OPENAI_API_KEY": "${OPENAI_API_KEY}",
     "DATABASE_URL": "${DATABASE_URL}",
     "SECRET_KEY": "django-insecure-rc!!rs%4$by+uy_bxppk^owfv(1!o)0u9k=&dd99-_22$eau^i"
