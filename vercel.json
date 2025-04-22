@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.12"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
+  ],
+  "env": {
+    "ALLOWED_HOSTS": ".vercel.app,*",
+    "DEBUG": "True",
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}",
+    "SECRET_KEY": "django-insecure-rc!!rs%4$by+uy_bxppk^owfv(1!o)0u9k=&dd99-_22$eau^i",
+    "DJANGO_SETTINGS_MODULE": "myproject.settings",
+    "VERCEL": "1"
+  }
+} 
