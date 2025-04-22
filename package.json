@@ -1,0 +1,12 @@
+{
+  "name": "curestock-app",
+  "version": "1.0.0",
+  "description": "CureStock Application",
+  "scripts": {
+    "build": "bash build_files.sh"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "private": true
+} 

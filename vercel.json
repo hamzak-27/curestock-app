@@ -1,13 +1,9 @@
 {
   "version": 2,
+  "buildCommand": "bash build_files.sh",
+  "outputDirectory": "public",
+  "ignoreCommand": "echo 'Skipping ignore checks'",
   "builds": [
-    {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "public"
-      }
-    },
     {
       "src": "myproject/wsgi.py",
       "use": "@vercel/python"
