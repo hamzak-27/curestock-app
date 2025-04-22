@@ -3,16 +3,17 @@
 # Build script for Vercel Django deployment
 
 echo "Building the project..."
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+# Use absolute path to Python in Vercel environment
+/opt/conda/bin/python -m pip install --upgrade pip
+/opt/conda/bin/pip install -r requirements.txt
 
 echo "Collecting static files..."
-python manage.py collectstatic --noinput
+/opt/conda/bin/python manage.py collectstatic --noinput
 
 echo "Make migrations..."
-python manage.py makemigrations
+/opt/conda/bin/python manage.py makemigrations
 
 echo "Migrate database..."
-python manage.py migrate
+/opt/conda/bin/python manage.py migrate
 
 echo "Build completed." 
