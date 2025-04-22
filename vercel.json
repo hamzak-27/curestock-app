@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "bash build_files.sh",
   "outputDirectory": "public",
-  "ignoreCommand": "echo 'Skipping ignore checks'",
+  
   "builds": [
     {
       "src": "myproject/wsgi.py",
