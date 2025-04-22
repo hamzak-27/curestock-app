@@ -1,9 +1,15 @@
 import json
 import random
 import datetime
-import openai
-from django.conf import settings
 from decimal import Decimal
+from django.conf import settings
+
+# Import OpenAI safely with fallback
+try:
+    import openai
+    OPENAI_AVAILABLE = True
+except ImportError:
+    OPENAI_AVAILABLE = False
 
 def extract_quantity_value(quantity_str):
     """
@@ -52,9 +58,9 @@ def find_medicine_in_database(medicine_name):
 
 def generate_bill_with_openai(call, orders):
     """
-    Uses OpenAI to generate a formatted bill for the order
+    Uses OpenAI to generate a formatted bill for the order, with fallback to simple format
     """
-    # Prepare data for OpenAI
+    # Prepare data 
     order_items = []
     total_amount = Decimal('0.00')
     
@@ -101,7 +107,7 @@ def generate_bill_with_openai(call, orders):
     gst_amount = (total_amount * gst_percentage) / Decimal('100.00')
     grand_total = total_amount + gst_amount
     
-    # Prepare context for OpenAI
+    # Prepare context for bill generation
     context = {
         "customer": {
             "name": f"Customer ({call.phone_number})",
@@ -122,43 +128,102 @@ def generate_bill_with_openai(call, orders):
         "delivery_method": orders[0].get_delivery_method_display() if orders else "Pickup"
     }
 
-    # Generate bill using OpenAI
-    client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
-    
-    prompt = f"""
-    Generate a professional looking invoice for a pharmacy in text format (no HTML).
-    Use the following information to generate the invoice:
-    
-    {json.dumps(context, indent=2)}
-    
-    The format should include:
-    1. Company header (Curestock Pharmacy)
-    2. Invoice details (number, date)
-    3. Customer information
-    4. Line items with quantity, unit price, and amount
-    5. Subtotal
-    6. GST (tax)
-    7. Total amount
-    8. Payment and delivery information
-    9. Thank you message
-    
-    Make it look well-formatted and professional using only plain text with proper spacing and alignment.
-    """
-    
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a professional invoice generator for a pharmacy."},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=1000
-    )
-    
-    bill_content = response.choices[0].message.content.strip()
+    # Try to use OpenAI if available
+    if OPENAI_AVAILABLE and settings.OPENAI_API_KEY:
+        try:
+            client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+            
+            prompt = f"""
+            Generate a professional looking invoice for a pharmacy in text format (no HTML).
+            Use the following information to generate the invoice:
+            
+            {json.dumps(context, indent=2)}
+            
+            The format should include:
+            1. Company header (Curestock Pharmacy)
+            2. Invoice details (number, date)
+            3. Customer information
+            4. Line items with quantity, unit price, and amount
+            5. Subtotal
+            6. GST (tax)
+            7. Total amount
+            8. Payment and delivery information
+            9. Thank you message
+            
+            Make it look well-formatted and professional using only plain text with proper spacing and alignment.
+            """
+            
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": "You are a professional invoice generator for a pharmacy."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=1000
+            )
+            
+            bill_content = response.choices[0].message.content.strip()
+        except Exception as e:
+            # Fallback to simple bill format if OpenAI fails
+            bill_content = generate_simple_bill(context)
+    else:
+        # Use a simple bill generator if OpenAI is not available
+        bill_content = generate_simple_bill(context)
     
     return {
         "invoice_number": context["invoice"]["number"],
         "content": bill_content,
         "total_amount": grand_total,
         "gst_percentage": gst_percentage
-    } 
+    }
+
+def generate_simple_bill(context):
+    """Generate a simple bill without using OpenAI"""
+    invoice = context["invoice"]
+    customer = context["customer"]
+    items = context["order_items"]
+    summary = context["summary"]
+    
+    # Format the header
+    bill = [
+        "=" * 60,
+        "                CURESTOCK PHARMACY                ",
+        "           Your Health is Our Priority            ",
+        "=" * 60,
+        "",
+        f"INVOICE #{invoice['number']}",
+        f"Date: {invoice['date']}",
+        "",
+        "CUSTOMER INFORMATION",
+        f"Name: {customer['name']}",
+        f"Phone: {customer['phone']}",
+        "",
+        "ITEMS",
+        "-" * 60
+    ]
+    
+    # Format line items
+    bill.append(f"{'Item':<30} {'Quantity':<10} {'Price':<10} {'Amount':<10}")
+    bill.append("-" * 60)
+    
+    for item in items:
+        bill.append(f"{item['item']:<30} {item['quantity']:<10} {item['price']:<10.2f} {item['amount']:<10.2f}")
+    
+    # Format summary
+    bill.extend([
+        "-" * 60,
+        f"{'Subtotal:':<50} {summary['subtotal']:<10.2f}",
+        f"{'GST (' + str(summary['gst_percentage']) + '%):':<50} {summary['gst_amount']:<10.2f}",
+        f"{'TOTAL:':<50} {summary['total']:<10.2f}",
+        "",
+        f"Delivery Method: {context['delivery_method']}",
+        "",
+        "PAYMENT",
+        "Payment due within 30 days of invoice",
+        "",
+        "Thank you for choosing Curestock Pharmacy!",
+        "For any queries, please contact us at support@curestock.com",
+        "=" * 60
+    ])
+    
+    return "\n".join(bill) 

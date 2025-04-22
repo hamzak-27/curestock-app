@@ -10,6 +10,11 @@ import re
 from .models import Medicine, Call, Order, Bill
 from .utils import generate_bill_with_openai, generate_invoice_number
 
+# Add a simple health check view
+def health_check(request):
+    """Simple health check endpoint that doesn't depend on database access"""
+    return HttpResponse("OK", content_type="text/plain")
+
 # Create your views here.
 
 def inventory_list(request):
@@ -227,8 +232,12 @@ def latest_calls(request):
     return JsonResponse({'calls': []})
 
 def home(request):
-    calls = Call.objects.all().order_by('-call_time')
-    return render(request, 'myapp/home.html', {'calls': calls})
+    try:
+        calls = Call.objects.all().order_by('-call_time')
+        return render(request, 'myapp/home.html', {'calls': calls})
+    except Exception as e:
+        # Provide a fallback if database access fails
+        return HttpResponse(f"Welcome to CureStock App. Setup your database connection to view calls. Error: {str(e)}")
 
 def call_detail(request, call_id):
     call = get_object_or_404(Call, id=call_id)
