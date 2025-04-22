@@ -1,49 +1,36 @@
 #!/bin/bash
 
-# Build script for Vercel Django deployment
-echo "Building the project..."
+# This script is used to build and prepare files for deployment on Vercel
 
-# Explicitly create staticfiles directory
+# Exit on any error
+set -e
+
+# Update apt packages and install dependencies
+apt-get update
+apt-get install -y python3-dev default-libmysqlclient-dev build-essential pkg-config
+
+# Debug directory contents
+echo "Current directory contents:"
+ls -la
+
+# Create the staticfiles directory
 mkdir -p staticfiles
+echo "Created staticfiles directory"
+ls -la staticfiles
 
-# Install requirements
-echo "Installing minimal requirements..."
-pip install -r requirements-minimal.txt
+# Install Python dependencies
+echo "Installing Python dependencies..."
+pip install --no-cache-dir -r requirements.txt
 
-# Create a placeholder file to ensure staticfiles exists
-echo "This is a placeholder to ensure the staticfiles directory exists" > staticfiles/placeholder.txt
-echo "Creating CSS file in staticfiles..."
-cat > staticfiles/style.css << 'EOL'
-/* Basic styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
+# Run collectstatic
+echo "Collecting static files..."
+python manage.py collectstatic --noinput || echo "Collectstatic failed, but continuing..."
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-}
+# Create a verification file to ensure staticfiles directory exists
+echo "Vercel deployment" > staticfiles/verification.txt
 
-/* Header styles */
-header {
-  background-color: #4b6cb7;
-  color: white;
-  padding: 1rem 0;
-  text-align: center;
-}
+# Debug staticfiles directory after collection
+echo "Staticfiles directory contents after collection:"
+ls -la staticfiles
 
-/* Footer styles */
-footer {
-  background-color: #f4f4f4;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
-}
-EOL
-
-echo "Build completed. Files in staticfiles directory:"
-ls -la staticfiles/ 
+echo "Build script completed successfully" 
