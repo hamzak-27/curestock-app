@@ -348,22 +348,15 @@
                     </thead>
                     <tbody>
                         {% comment %}
-                        The following is a placeholder for the bill content.
-                        In a real implementation, you would parse the bill content
-                        and display it as structured data in this table.
+                        Instead of using the split filter (which isn't available in Django),
+                        we'll display the bill content directly in a pre-formatted cell
                         {% endcomment %}
                         
-                        {% for line in bill.content|linebreaksbr|striptags|split:"<br>"|slice:":10" %}
-                            {% if line|trim %}
-                                <tr>
-                                    <td colspan="5">{{ line }}</td>
-                                </tr>
-                            {% endif %}
-                        {% empty %}
-                            <tr>
-                                <td colspan="5">No details available</td>
-                            </tr>
-                        {% endfor %}
+                        <tr>
+                            <td colspan="5" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.5;">
+                                {{ bill.content }}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
