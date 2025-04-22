@@ -120,4 +120,8 @@ Desktop.ini
 # macOS
 .DS_Store
 .AppleDouble
-.LSOverride 
+.LSOverride
+
+# Don't ignore staticfiles directory for Vercel
+!staticfiles/
+!staticfiles/**/* 
