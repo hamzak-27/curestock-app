@@ -13,6 +13,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
 os.environ["RENDER"] = "1"
 
+# Ensure DATABASE_URL is available if set
+if "DATABASE_URL" in os.environ:
+    print("Database URL is configured")
+
 # Import the Django WSGI application
 from myproject.wsgi import application as django_application
 

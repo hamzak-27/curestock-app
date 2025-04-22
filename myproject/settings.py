@@ -83,6 +83,7 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Default to SQLite for local development
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -92,7 +93,15 @@ DATABASES = {
 
 # For production on Render
 if os.environ.get('RENDER'):
-    # Use SQLite in production on Render
+    # Use PostgreSQL in production on Render
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1',
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
+    
     ALLOWED_HOSTS.extend(['render.com', '.onrender.com'])
     
     # Configure static files for Render

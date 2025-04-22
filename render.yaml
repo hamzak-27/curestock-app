@@ -11,6 +11,8 @@ services:
         generateValue: true
       - key: OPENAI_API_KEY
         sync: false
+      - key: DATABASE_URL
+        value: postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1
       - key: DEBUG
         value: False
       - key: RENDER

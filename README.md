@@ -25,6 +25,7 @@ A Django application for inventory management of medicines and related services.
 6. Add the following environment variables:
    - `SECRET_KEY`: Generate a secure random key
    - `OPENAI_API_KEY`: Your OpenAI API key
+   - `DATABASE_URL`: Your PostgreSQL connection string (e.g., postgresql://username:password@host/database)
    - `DEBUG`: False
    - `RENDER`: true
    - `MIGRATION_SECRET`: A secret key for the migration endpoint
@@ -59,4 +60,21 @@ Replace `your_migration_secret` with the value you set in your environment varia
 
 ## Database Setup
 
-The application uses SQLite in both development and production environments. The database file is stored in the project root as `db.sqlite3`. Django migrations will handle the schema creation automatically when you run migrations.
+The application uses SQLite for local development and PostgreSQL in production on Render. The PostgreSQL database connection is automatically configured when deployed to Render using the DATABASE_URL environment variable.
+
+You don't need to manually create database tables - Django migrations will handle the schema creation automatically when you run migrations.
+
+### Local PostgreSQL Setup (Optional)
+
+If you want to use PostgreSQL locally as well:
+
+1. Install PostgreSQL on your machine
+2. Create a database
+3. Set the DATABASE_URL environment variable in your local `.env` file:
+   ```
+   DATABASE_URL=postgresql://username:password@localhost/database
+   ```
+4. Run migrations:
+   ```bash
+   python manage.py migrate
+   ```

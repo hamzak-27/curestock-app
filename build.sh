@@ -14,6 +14,7 @@ python manage.py collectstatic --no-input
 
 # Run migrations automatically during build
 echo "=== Running migrations ==="
+echo "Database URL exists: $DATABASE_URL"
 python manage.py migrate
 
 # Make sure app.py is readable
