@@ -23,5 +23,10 @@
       "src": "/(.*)",
       "dest": "myproject/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "ALLOWED_HOSTS": ".vercel.app",
+    "DEBUG": "False",
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+  }
 } 
