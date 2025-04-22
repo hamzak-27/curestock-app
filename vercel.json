@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "ignoreCommand": "echo 'Skipping ignore checks'",
+  
   "builds": [
     {
       "src": "api/index.py",
