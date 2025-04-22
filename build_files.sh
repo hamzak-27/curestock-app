@@ -2,32 +2,42 @@
 
 # This script is used to build and prepare files for deployment on Vercel
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+# Print commands before execution and exit on error
+set -ex
 
 echo "Current directory contents:"
 ls -la
 
-# Create and populate staticfiles directory first, before any commands that might fail
-echo "Setting up static files directory..."
-mkdir -p staticfiles
-echo "Vercel deployment" > staticfiles/index.html
-echo "/* Empty CSS file */" > staticfiles/style.css
-echo "console.log('Hello from Vercel');" > staticfiles/script.js
+# Create public directory for Vercel
+echo "Creating public directory structure..."
+mkdir -p public
+cp -r staticfiles/* public/ 2>/dev/null || true
 
-# List the staticfiles directory to confirm it exists with content
-echo "Staticfiles directory contents:"
-ls -la staticfiles/
+# Add default files to public directory
+echo "<h1>CureStock App</h1><p>Vercel Deployment</p>" > public/index.html
+echo "body { font-family: Arial; }" > public/style.css
+echo "console.log('Vercel deployment');" > public/script.js
 
-# Install Python dependencies
+echo "Public directory created with contents:"
+ls -la public/
+
+# Install Python dependencies 
 echo "Installing Python dependencies..."
 pip install --no-cache-dir -r vercel-requirements.txt
 
 # Try to run collectstatic but continue on failure
-echo "Running collectstatic..."
-python manage.py collectstatic --noinput || echo "Collectstatic failed, but continuing build"
+echo "Running collectstatic to public directory..."
+python manage.py collectstatic --noinput --settings=myproject.settings || echo "Collectstatic failed, continuing..."
 
-# List staticfiles directory contents
+# Ensure the public folder has content even if collectstatic fails
+echo "Ensuring public directory has content..."
+ls -la public/ || echo "Public directory listing failed"
+
+# Copy public directory to staticfiles as backup
+echo "Copying public directory to staticfiles..."
+mkdir -p staticfiles
+cp -r public/* staticfiles/ 2>/dev/null || true
+
 echo "Final staticfiles directory contents:"
 ls -la staticfiles/
 

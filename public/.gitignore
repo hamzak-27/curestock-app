@@ -1,0 +1,8 @@
+# Ignore everything in this directory
+*
+
+# Except this file and essential static files
+!.gitignore
+!index.html
+!style.css
+!script.js 

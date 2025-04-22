@@ -122,9 +122,16 @@ Desktop.ini
 .AppleDouble
 .LSOverride
 
-# Don't ignore these crucial staticfiles
+# Don't ignore these crucial static files
 !staticfiles/
 !staticfiles/.gitignore
 !staticfiles/index.html  
 !staticfiles/style.css
-!staticfiles/script.js 
+!staticfiles/script.js
+
+# Don't ignore public directory (for Vercel)
+!public/
+!public/.gitignore
+!public/index.html
+!public/style.css
+!public/script.js 
