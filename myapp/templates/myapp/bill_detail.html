@@ -5,90 +5,283 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice #{{ bill.invoice_number }}</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+        :root {
+            --navy-blue: #1a365d;
+            --navy-blue-light: #2c4c7c;
+            --navy-blue-lighter: #4a6fa5;
+            --off-white: #f8f9fa;
+            --light-blue: #e6f7ff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--off-white);
+            color: #333;
+        }
+        
+        .header {
+            background-color: var(--navy-blue);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            padding: 20px;
         }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+        
         .nav-links {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            gap: 20px;
+            margin: 20px 0;
+            gap: 15px;
         }
+        
         .nav-links a {
             text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            color: white;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            background-color: var(--navy-blue);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
+        
         .nav-links a:hover {
-            background-color: #e7f4ff;
+            background-color: var(--navy-blue-light);
+            transform: translateY(-2px);
         }
-        .bill-container {
+        
+        .invoice-wrapper {
             background-color: white;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .invoice-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            background-color: white;
+            border-bottom: 3px solid var(--navy-blue);
         }
-        .bill-content {
-            white-space: pre-line;
-            font-family: 'Courier New', Courier, monospace;
-            line-height: 1.5;
+        
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            background-color: #3498db;
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--navy-blue);
+            margin-bottom: 5px;
+        }
+        
+        .company-message {
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .invoice-title {
+            text-align: right;
+        }
+        
+        .invoice-title h2 {
+            font-size: 28px;
+            color: var(--navy-blue);
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+        }
+        
+        .invoice-details {
+            text-align: right;
+            color: #4a5568;
+        }
+        
+        .invoice-details p {
+            margin: 5px 0;
+        }
+        
+        .customer-section {
+            padding: 20px 30px;
+            border-bottom: 1px solid #e2e8f0;
+            background-color: var(--light-blue);
+        }
+        
+        .customer-details {
+            margin-bottom: 10px;
+        }
+        
+        .customer-details label {
+            font-weight: 600;
+            color: var(--navy-blue);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .invoice-body {
+            padding: 0 30px;
+        }
+        
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .invoice-table th {
+            background-color: var(--navy-blue);
             color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 4px;
+            text-align: left;
+            padding: 12px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .back-button:hover {
-            background-color: #2980b9;
+        
+        .invoice-table th:first-child {
+            border-top-left-radius: 6px;
         }
-        .print-button {
-            display: inline-block;
-            margin-top: 20px;
-            margin-left: 10px;
-            background-color: #27ae60;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 4px;
-            cursor: pointer;
+        
+        .invoice-table th:last-child {
+            border-top-right-radius: 6px;
+            text-align: right;
         }
-        .print-button:hover {
-            background-color: #219653;
+        
+        .invoice-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .bill-header {
+        
+        .invoice-table td:last-child {
+            text-align: right;
+        }
+        
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .invoice-total {
+            border-top: 2px solid var(--navy-blue);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .total-table {
+            width: 300px;
+        }
+        
+        .total-table tr td {
+            padding: 8px 0;
+        }
+        
+        .total-table tr td:last-child {
+            text-align: right;
+        }
+        
+        .total-table tr.total-row td {
+            border-top: 1px solid #e2e8f0;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--navy-blue);
+            padding-top: 12px;
+        }
+        
+        .invoice-footer {
+            background-color: var(--light-blue);
+            padding: 20px 30px;
+            border-top: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            align-items: center;
         }
-        .bill-header h2 {
-            color: #2c3e50;
-            margin: 0;
-        }
-        .bill-info {
-            text-align: right;
+        
+        .terms {
+            color: #4a5568;
             font-size: 14px;
-            color: #7f8c8d;
         }
+        
+        .terms h4 {
+            color: var(--navy-blue);
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+        
+        .signature {
+            text-align: right;
+            color: #4a5568;
+            font-size: 14px;
+        }
+        
+        .signature-line {
+            width: 200px;
+            height: 1px;
+            background-color: #718096;
+            margin: 25px 0 5px auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--navy-blue);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--navy-blue-light);
+        }
+        
+        .btn-success {
+            background-color: #38a169;
+        }
+        
+        .btn-success:hover {
+            background-color: #2f855a;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
         @media print {
             body {
                 background-color: white;
@@ -96,41 +289,118 @@
             }
             .container {
                 max-width: 100%;
+                padding: 0;
             }
-            .nav-links, .back-button, .print-button {
+            .header, .nav-links, .button-group {
                 display: none;
             }
-            .bill-container {
+            .invoice-wrapper {
                 box-shadow: none;
-                padding: 0;
+                border-radius: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="header">
         <h1>Invoice #{{ bill.invoice_number }}</h1>
-        
+    </div>
+    
+    <div class="container">
         <div class="nav-links">
             <a href="{% url 'myapp:home' %}">Call History</a>
             <a href="{% url 'myapp:inventory_list' %}">Inventory Management</a>
             <a href="{% url 'myapp:call_detail' bill.call.id %}">Back to Order</a>
         </div>
         
-        <div class="bill-container">
-            <div class="bill-header">
-                <h2>Invoice #{{ bill.invoice_number }}</h2>
-                <div class="bill-info">
-                    <div>Generated: {{ bill.created_at|date:"F j, Y - g:i A" }}</div>
-                    <div>Total Amount: ₹{{ bill.total_amount }}</div>
+        <div class="invoice-wrapper">
+            <div class="invoice-header">
+                <div class="company-info">
+                    <div class="company-name">Curestock Pharmacy</div>
+                    <div class="company-message">Quality Healthcare Solutions</div>
+                </div>
+                <div class="invoice-title">
+                    <h2>Invoice</h2>
+                    <div class="invoice-details">
+                        <p><strong>Invoice Number:</strong> {{ bill.invoice_number }}</p>
+                        <p><strong>Date:</strong> {{ bill.created_at|date:"F j, Y" }}</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="bill-content">{{ bill.content }}</div>
+            <div class="customer-section">
+                <div class="customer-details">
+                    <label>Customer:</label>
+                    <div>{{ bill.call.phone_number }}</div>
+                </div>
+            </div>
+            
+            <div class="invoice-body">
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>S No.</th>
+                            <th>Description</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% comment %}
+                        The following is a placeholder for the bill content.
+                        In a real implementation, you would parse the bill content
+                        and display it as structured data in this table.
+                        {% endcomment %}
+                        
+                        {% for line in bill.content|linebreaksbr|striptags|split:"<br>"|slice:":10" %}
+                            {% if line|trim %}
+                                <tr>
+                                    <td colspan="5">{{ line }}</td>
+                                </tr>
+                            {% endif %}
+                        {% empty %}
+                            <tr>
+                                <td colspan="5">No details available</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="invoice-total">
+                <table class="total-table">
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>₹{{ bill.total_amount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tax (0%)</td>
+                        <td>₹0.00</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total</td>
+                        <td>₹{{ bill.total_amount }}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="invoice-footer">
+                <div class="terms">
+                    <h4>Terms & Conditions</h4>
+                    <p>Payment is due within 14 days. Thank you for your business.</p>
+                </div>
+                <div class="signature">
+                    <div class="signature-line"></div>
+                    <p>Authorized Signature</p>
+                </div>
+            </div>
         </div>
         
-        <button onclick="window.print()" class="print-button">Print Invoice</button>
-        <a href="{% url 'myapp:call_detail' bill.call.id %}" class="back-button">Back to Order</a>
+        <div class="button-group">
+            <button onclick="window.print()" class="btn btn-success">Print Invoice</button>
+            <a href="{% url 'myapp:call_detail' bill.call.id %}" class="btn btn-primary">Back to Order</a>
+        </div>
     </div>
 </body>
 </html> 

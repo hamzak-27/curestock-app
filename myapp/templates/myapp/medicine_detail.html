@@ -5,118 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ medicine.name }} - Medicine Details</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+        :root {
+            --navy-blue: #1a365d;
+            --navy-blue-light: #2c4c7c;
+            --off-white: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--off-white);
+            color: #333;
+        }
+        
+        .header {
+            background-color: var(--navy-blue);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 30px auto;
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
         }
-        h1 {
-            color: #2c3e50;
+        
+        .medicine-title {
+            color: var(--navy-blue);
             margin-top: 0;
-        }
-        .info-section {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
             margin-bottom: 20px;
         }
-        .info-label {
-            font-weight: bold;
-            color: #7f8c8d;
-            margin-bottom: 5px;
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
+        
+        .info-section {
+            margin-bottom: 25px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #718096;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
         .info-value {
             font-size: 18px;
             margin-bottom: 15px;
+            color: #2d3748;
         }
-        .back-button {
+        
+        .btn {
             display: inline-block;
-            margin-top: 20px;
-            background-color: #3498db;
+            padding: 12px 24px;
+            background-color: var(--navy-blue);
             color: white;
-            padding: 10px 15px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        .back-button:hover {
-            background-color: #2980b9;
+        
+        .btn:hover {
+            background-color: var(--navy-blue-light);
+            transform: translateY(-2px);
         }
+        
+        .back-button {
+            margin-top: 25px;
+        }
+        
         .status {
-            padding: 5px 10px;
-            border-radius: 3px;
+            padding: 8px 16px;
+            border-radius: 20px;
             display: inline-block;
+            font-weight: 600;
+            font-size: 14px;
         }
+        
         .status-active {
-            background-color: #27ae60;
-            color: white;
+            background-color: #d4edda;
+            color: #155724;
         }
+        
         .status-discontinued {
-            background-color: #e74c3c;
-            color: white;
+            background-color: #f8d7da;
+            color: #721c24;
         }
+        
         .quantity-low {
-            color: #e74c3c;
-            font-weight: bold;
+            color: #e53e3e;
+            font-weight: 600;
         }
+        
         .quantity-good {
-            color: #27ae60;
+            color: #38a169;
+            font-weight: 600;
+        }
+        
+        .stock-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            vertical-align: middle;
+        }
+        
+        .stock-low {
+            background-color: #fed7d7;
+            color: #9b2c2c;
+        }
+        
+        .stock-good {
+            background-color: #c6f6d5;
+            color: #22543d;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>{{ medicine.name }}</h1>
-        
-        <div class="info-section">
-            <div class="info-label">Manufacturer</div>
-            <div class="info-value">{{ medicine.manufacturer }}</div>
+    <div class="header">
+        <h1>Medicine Details</h1>
+    </div>
+    
+    <div class="page-container">
+        <div class="container">
+            <h1 class="medicine-title">{{ medicine.name }}</h1>
             
-            <div class="info-label">Price</div>
-            <div class="info-value">₹{{ medicine.price }}</div>
+            <div class="info-grid">
+                <div>
+                    <div class="info-section">
+                        <div class="info-label">Manufacturer</div>
+                        <div class="info-value">{{ medicine.manufacturer }}</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Price</div>
+                        <div class="info-value">₹{{ medicine.price }}</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="info-section">
+                        <div class="info-label">Quantity in Stock</div>
+                        <div class="info-value {% if medicine.quantity < 30 %}quantity-low{% elif medicine.quantity > 100 %}quantity-good{% endif %}">
+                            {{ medicine.quantity }}
+                            {% if medicine.quantity < 30 %}
+                                <span class="stock-indicator stock-low">Low stock</span>
+                            {% elif medicine.quantity > 100 %}
+                                <span class="stock-indicator stock-good">Well stocked</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Status</div>
+                        <div class="info-value">
+                            <span class="status {% if medicine.is_discontinued %}status-discontinued{% else %}status-active{% endif %}">
+                                {% if medicine.is_discontinued %}Discontinued{% else %}Active{% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="info-label">Quantity in Stock</div>
-            <div class="info-value {% if medicine.quantity < 30 %}quantity-low{% elif medicine.quantity > 100 %}quantity-good{% endif %}">
-                {{ medicine.quantity }}
-                {% if medicine.quantity < 30 %}
-                    (Low stock)
-                {% elif medicine.quantity > 100 %}
-                    (Well stocked)
+            <div class="info-section">
+                {% if medicine.medicine_type %}
+                    <div class="info-label">Type</div>
+                    <div class="info-value">{{ medicine.medicine_type }}</div>
+                {% endif %}
+                
+                {% if medicine.pack_size %}
+                    <div class="info-label">Pack Size</div>
+                    <div class="info-value">{{ medicine.pack_size }}</div>
+                {% endif %}
+                
+                {% if medicine.composition1 or medicine.composition2 %}
+                    <div class="info-label">Composition</div>
+                    <div class="info-value">
+                        {% if medicine.composition1 %}{{ medicine.composition1 }}{% endif %}
+                        {% if medicine.composition2 %}<br>{{ medicine.composition2 }}{% endif %}
+                    </div>
                 {% endif %}
             </div>
             
-            <div class="info-label">Status</div>
-            <div class="info-value">
-                <span class="status {% if medicine.is_discontinued %}status-discontinued{% else %}status-active{% endif %}">
-                    {% if medicine.is_discontinued %}Discontinued{% else %}Active{% endif %}
-                </span>
-            </div>
-            
-            {% if medicine.medicine_type %}
-                <div class="info-label">Type</div>
-                <div class="info-value">{{ medicine.medicine_type }}</div>
-            {% endif %}
-            
-            {% if medicine.pack_size %}
-                <div class="info-label">Pack Size</div>
-                <div class="info-value">{{ medicine.pack_size }}</div>
-            {% endif %}
-            
-            {% if medicine.composition1 or medicine.composition2 %}
-                <div class="info-label">Composition</div>
-                <div class="info-value">
-                    {% if medicine.composition1 %}{{ medicine.composition1 }}{% endif %}
-                    {% if medicine.composition2 %}<br>{{ medicine.composition2 }}{% endif %}
-                </div>
-            {% endif %}
+            <a href="{% url 'myapp:inventory_list' %}" class="btn back-button">Back to Inventory</a>
         </div>
-        
-        <a href="{% url 'myapp:inventory_list' %}" class="back-button">Back to Inventory</a>
     </div>
 </body>
 </html> 

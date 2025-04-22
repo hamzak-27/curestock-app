@@ -5,138 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicine Inventory</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+        :root {
+            --navy-blue: #1a365d;
+            --navy-blue-light: #2c4c7c;
+            --off-white: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--off-white);
+            color: #333;
+        }
+        
+        .header {
+            background-color: var(--navy-blue);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
         h1 {
-            color: #2c3e50;
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            background-color: var(--navy-blue);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--navy-blue-light);
+            transform: translateY(-2px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        h2 {
+            color: var(--navy-blue);
+            margin: 0;
+        }
+        
+        .btn {
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
             text-align: center;
         }
+        
+        .export-button {
+            background-color: var(--navy-blue);
+            color: white;
+            box-shadow: var(--shadow);
+            font-size: 14px;
+        }
+        
+        .export-button:hover {
+            background-color: var(--navy-blue-light);
+            transform: translateY(-2px);
+        }
+        
         .inventory-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             background-color: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
         }
+        
         .inventory-table th, .inventory-table td {
-            padding: 12px 15px;
+            padding: 15px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #e2e8f0;
         }
+        
         .inventory-table th {
-            background-color: #3498db;
+            background-color: var(--navy-blue);
             color: white;
-            font-weight: bold;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
         }
+        
+        .inventory-table tr:last-child td {
+            border-bottom: none;
+        }
+        
         .inventory-table tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f1f5f9;
         }
+        
         .low-stock {
-            color: #e74c3c;
+            color: #e53e3e;
             font-weight: bold;
         }
+        
         .good-stock {
-            color: #27ae60;
+            color: #38a169;
+            font-weight: bold;
         }
+        
         .detail-link {
-            color: #3498db;
+            color: var(--navy-blue);
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 3px 0;
         }
+        
         .detail-link:hover {
+            color: var(--navy-blue-light);
             text-decoration: underline;
         }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .export-button {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .export-button:hover {
-            background-color: #219653;
-        }
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
+        
+        .status-badge {
+            display: inline-block;
             padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
         }
-        .nav-links a:hover {
-            background-color: #e7f4ff;
+        
+        .status-active {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-discontinued {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .empty-table {
+            text-align: center;
+            padding: 30px;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
-    <h1>Medicine Inventory</h1>
-    
-    <div class="nav-links">
-        <a href="{% url 'myapp:home' %}">Call History</a>
-        <a href="{% url 'myapp:inventory_list' %}">Inventory Management</a>
+    <div class="header">
+        <h1>Medicine Inventory</h1>
     </div>
     
-    <div class="header-container">
-        <h2>Inventory List</h2>
-        <a href="{% url 'myapp:export_medicines_csv' %}" class="export-button">Export to CSV</a>
+    <div class="container">
+        <div class="nav-links">
+            <a href="{% url 'myapp:home' %}">Call History</a>
+            <a href="{% url 'myapp:inventory_list' %}">Inventory Management</a>
+        </div>
+        
+        <div class="header-container">
+            <h2>Inventory List</h2>
+            <a href="{% url 'myapp:export_medicines_csv' %}" class="btn export-button">Export to CSV</a>
+        </div>
+        
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Manufacturer</th>
+                    <th>Price (₹)</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medicine in medicines %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'myapp:medicine_detail' medicine.id %}" class="detail-link">
+                                {{ medicine.name }}
+                            </a>
+                        </td>
+                        <td>{{ medicine.manufacturer }}</td>
+                        <td>₹{{ medicine.price }}</td>
+                        <td class="{% if medicine.quantity < 30 %}low-stock{% elif medicine.quantity > 100 %}good-stock{% endif %}">
+                            {{ medicine.quantity }}
+                        </td>
+                        <td>
+                            {% if medicine.is_discontinued %}
+                                <span class="status-badge status-discontinued">Discontinued</span>
+                            {% else %}
+                                <span class="status-badge status-active">Active</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="empty-table">No medicines in inventory</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    
-    <table class="inventory-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Manufacturer</th>
-                <th>Price (₹)</th>
-                <th>Quantity</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for medicine in medicines %}
-                <tr>
-                    <td>
-                        <a href="{% url 'myapp:medicine_detail' medicine.id %}" class="detail-link">
-                            {{ medicine.name }}
-                        </a>
-                    </td>
-                    <td>{{ medicine.manufacturer }}</td>
-                    <td>₹{{ medicine.price }}</td>
-                    <td class="{% if medicine.quantity < 30 %}low-stock{% elif medicine.quantity > 100 %}good-stock{% endif %}">
-                        {{ medicine.quantity }}
-                    </td>
-                    <td>
-                        {% if medicine.is_discontinued %}
-                            <span style="color: #e74c3c;">Discontinued</span>
-                        {% else %}
-                            <span style="color: #27ae60;">Active</span>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="5" style="text-align: center;">No medicines in inventory</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 </body>
 </html> 
