@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: curestock
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn myproject.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: DATABASE_URL
+        fromDatabase:
+          name: neondb
+          property: connectionString
+      - key: SECRET_KEY
+        sync: false
+      - key: DEBUG
+        value: False 
