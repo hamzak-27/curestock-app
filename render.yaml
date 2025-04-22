@@ -4,7 +4,7 @@ services:
     env: python
     region: oregon # Replace with your preferred region
     buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: gunicorn app:app
+    startCommand: gunicorn myproject.wsgi:application
     runtime: python3.11
     envVars:
       - key: SECRET_KEY
@@ -12,11 +12,22 @@ services:
       - key: OPENAI_API_KEY
         sync: false
       - key: DATABASE_URL
-        value: postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1
+        fromDatabase:
+          name: curestock_db
+          property: connectionString
       - key: DEBUG
         value: False
       - key: RENDER
         value: true
       - key: MIGRATION_SECRET
         generateValue: true
-    autoDeploy: true 
+      - key: RUN_MIGRATIONS_ON_STARTUP
+        value: false
+    autoDeploy: true
+
+  - type: postgres
+    name: curestock_db
+    region: oregon
+    plan: free
+    ipAllowList: [] # Only allow internal connections
+    maxmemoryPolicy: noeviction 

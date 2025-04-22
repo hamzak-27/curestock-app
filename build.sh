@@ -12,14 +12,31 @@ pip install -r requirements.txt
 echo "=== Running collectstatic ==="
 python manage.py collectstatic --no-input
 
-# Run migrations automatically during build
+# Run migrations during build
 echo "=== Running migrations ==="
-echo "Database URL exists: $DATABASE_URL"
-python manage.py migrate
+if [ -n "$DATABASE_URL" ]; then
+    echo "Database URL exists, running migrations"
+    
+    # Show migration plan first for debugging
+    echo "=== Current migration status ==="
+    python manage.py showmigrations
+    
+    # Run migrations with verbosity for debugging
+    echo "=== Applying migrations ==="
+    python manage.py migrate --noinput --verbosity 2
+    
+    # Verify migrations were applied
+    echo "=== Verifying migrations ==="
+    python manage.py showmigrations
+    echo "=== Migrations completed ==="
+else
+    echo "DATABASE_URL not set, skipping migrations"
+fi
 
-# Make sure app.py is readable
-echo "=== Setting up app.py ==="
-chmod +x app.py
-ls -la app.py
+# Make script files executable in Unix/Linux environments
+if [ "$(uname)" != "Windows_NT" ]; then
+    echo "=== Making helper scripts executable ==="
+    chmod +x run_migrations.sh reset_migrations.py deploy_helpers.py
+fi
 
 echo "=== Build process completed ===" 

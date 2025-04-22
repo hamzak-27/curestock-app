@@ -14,6 +14,11 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -92,17 +97,24 @@ DATABASES = {
 }
 
 # For production on Render
-if os.environ.get('RENDER'):
+if os.environ.get('DATABASE_URL'):
+    logger.info("Using PostgreSQL database from DATABASE_URL")
     # Use PostgreSQL in production on Render
     DATABASES = {
         'default': dj_database_url.config(
-            default='postgresql://curestock_1_user:30ojM7FOojsrncsOMGJcmkaZ9icLuN2Y@dpg-d03trh6uk2gs73cldm1g-a.oregon-postgres.render.com/curestock_1',
             conn_max_age=600,
+            conn_health_checks=True,
             ssl_require=True
         )
     }
+    logger.info(f"Database engine: {DATABASES['default']['ENGINE']}")
+    logger.info(f"Database name: {DATABASES['default'].get('NAME', 'unknown')}")
+elif os.environ.get('RENDER'):
+    logger.warning("RENDER environment detected but no DATABASE_URL found")
     
-    ALLOWED_HOSTS.extend(['render.com', '.onrender.com'])
+# Update allowed hosts for Render
+if os.environ.get('RENDER'):
+    ALLOWED_HOSTS.extend(['.render.com', '.onrender.com'])
     
     # Configure static files for Render
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
