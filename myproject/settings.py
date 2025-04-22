@@ -98,7 +98,11 @@ DATABASES = {
 
 # For production on Render
 if os.environ.get('DATABASE_URL'):
-    logger.info("Using PostgreSQL database from DATABASE_URL")
+    # Log database URL (partially masked for security)
+    db_url = os.environ.get('DATABASE_URL')
+    masked_url = f"{db_url[:20]}..." if db_url else "None"
+    logger.info(f"Using PostgreSQL database from DATABASE_URL: {masked_url}")
+    
     # Use PostgreSQL in production on Render
     DATABASES = {
         'default': dj_database_url.config(
@@ -107,10 +111,16 @@ if os.environ.get('DATABASE_URL'):
             ssl_require=True
         )
     }
-    logger.info(f"Database engine: {DATABASES['default']['ENGINE']}")
-    logger.info(f"Database name: {DATABASES['default'].get('NAME', 'unknown')}")
+    
+    # Log database connection details (without sensitive info)
+    db_config = DATABASES['default']
+    logger.info(f"Database engine: {db_config['ENGINE']}")
+    logger.info(f"Database name: {db_config.get('NAME', 'unknown')}")
+    logger.info(f"Database host: {db_config.get('HOST', 'unknown')}")
+    logger.info(f"Database port: {db_config.get('PORT', 'unknown')}")
+    
 elif os.environ.get('RENDER'):
-    logger.warning("RENDER environment detected but no DATABASE_URL found")
+    logger.error("RENDER environment detected but DATABASE_URL not found. This will cause database connection issues.")
     
 # Update allowed hosts for Render
 if os.environ.get('RENDER'):
@@ -146,7 +156,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
+# https://docs.djangoproject.com/en/5.1/topics/i8n/
 
 LANGUAGE_CODE = "en-us"
 

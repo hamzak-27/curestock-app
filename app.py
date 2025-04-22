@@ -20,7 +20,7 @@ os.environ["RENDER"] = "1"
 
 # Ensure DATABASE_URL is available if set
 if "DATABASE_URL" in os.environ:
-    logger.info("Database URL is configured")
+    logger.info(f"Database URL is configured: {os.environ['DATABASE_URL'][:20]}...")
 else:
     logger.warning("DATABASE_URL not found in environment variables")
 
@@ -28,22 +28,20 @@ else:
 import django
 django.setup()
 
-# Run migrations automatically on startup - only if explicitly enabled
+# Run migrations on startup - critical for initial setup
 try:
-    if os.environ.get("RUN_MIGRATIONS_ON_STARTUP", "").lower() == "true":
-        logger.info("Attempting to run migrations on startup")
-        from django.core.management import call_command
-        
-        # Check migration status
-        logger.info("Current migration status:")
-        call_command('showmigrations')
-        
-        # Apply migrations
-        call_command('migrate', interactive=False, verbosity=2)
-        
-        logger.info("Migrations completed successfully")
-    else:
-        logger.info("Skipping migrations on startup (migrations should run during build)")
+    logger.info("Attempting to run migrations on startup")
+    from django.core.management import call_command
+    
+    # Check migration status
+    logger.info("Current migration status:")
+    call_command('showmigrations')
+    
+    # Apply migrations
+    logger.info("Applying migrations...")
+    call_command('migrate', interactive=False, verbosity=2)
+    
+    logger.info("Migrations completed successfully")
 except Exception as e:
     logger.error(f"Error running migrations: {str(e)}")
     import traceback

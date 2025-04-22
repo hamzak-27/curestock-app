@@ -51,20 +51,30 @@ If you're developing on Windows and deploying to Render:
 
 ### Missing Database Tables
 
-If you encounter errors like `relation "myapp_call" does not exist`, it means the migrations didn't run correctly. You can:
+If you encounter errors like `relation "myapp_call" does not exist` or `no such table: myapp_call`, it means the migrations didn't run correctly. To fix this:
 
 1. **SSH into your Render instance**:
    - Go to your web service in the Render dashboard
    - Navigate to the "Shell" tab
-   - Run the migration script:
+   - Run the diagnostic script:
+   ```
+   python setup_render_db.py
+   ```
+
+2. **Or use the manual migration script**:
    ```
    ./run_migrations.sh
    ```
 
-2. **Or use the helper script**:
-   ```
-   python deploy_helpers.py migrate
-   ```
+3. **Check if DATABASE_URL is set correctly**:
+   - In the Render dashboard, go to your web service
+   - Click on "Environment" 
+   - Verify that DATABASE_URL is set and points to your database
+   - If it's missing, you can manually add it using the connection string from your database service
+
+4. **Restart your web service** after fixing the database issues:
+   - In the Render dashboard, go to your web service
+   - Click the "Manual Deploy" button and select "Clear build cache & deploy"
 
 ### Reset Migrations
 
@@ -85,6 +95,7 @@ The following environment variables are used:
 - `DEBUG`: Set to "False" for production
 - `RENDER`: Set to "true" to identify the Render environment
 - `OPENAI_API_KEY`: Your OpenAI API key (set manually in dashboard)
+- `RUN_MIGRATIONS_ON_STARTUP`: Set to "true" to run migrations when the app starts
 
 ## Manual Database Management
 
@@ -96,4 +107,8 @@ You can connect to your Render PostgreSQL database from your local machine:
 
 ## Logs
 
-Check logs in the Render dashboard under the "Logs" tab to diagnose any issues with the application or database. 
+Check logs in the Render dashboard under the "Logs" tab to diagnose any issues with the application or database. Look for these specific issues:
+
+- `DATABASE_URL not found in environment variables` - Database connection not configured
+- `Error running migrations` - Migration issues
+- `relation "myapp_call" does not exist` - Tables not created properly 
