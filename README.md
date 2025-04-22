@@ -18,8 +18,9 @@ A Django application for inventory management of medicines and related services.
    - **Name**: Choose a name for your service (e.g., curestock-app)
    - **Region**: Choose a region close to your users
    - **Branch**: main (or your preferred branch)
-   - **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput`
-   - **Start Command**: `gunicorn myproject.wsgi:application`
+   - **Build Command**: `chmod +x build.sh && ./build.sh`
+   - **Start Command**: `gunicorn app:app`
+   - **Runtime**: Python 3.11
 
 6. Add the following environment variables:
    - `SECRET_KEY`: Generate a secure random key

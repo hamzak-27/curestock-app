@@ -4,7 +4,7 @@ services:
     env: python
     region: oregon # Replace with your preferred region
     buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: gunicorn myproject.wsgi:application
+    startCommand: gunicorn app:app
     runtime: python3.11
     envVars:
       - key: SECRET_KEY
