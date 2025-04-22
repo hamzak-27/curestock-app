@@ -1,8 +1,15 @@
 import os
 import sys
 import traceback
-from myproject.wsgi import application
-# This is a simple index file that Vercel can use as an entry point
+from django.core.wsgi import get_wsgi_application
+
+# Add the project root to sys.path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Set up Django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
+os.environ["VERCEL"] = "1"
+application = get_wsgi_application()
 
 def handler(request, **kwargs):
     try:
